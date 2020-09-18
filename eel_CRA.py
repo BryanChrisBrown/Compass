@@ -7,8 +7,13 @@ import sys
 
 import eel
 
-# Use latest version of Eel from parent directory
-sys.path.insert(1, '../../')
+"""
+
+    TODO:
+    - Add in Eel support for final built assets from next
+    - Organize file structure better
+
+"""
 
 
 @eel.expose  # Expose function to JavaScript
@@ -29,7 +34,8 @@ def pick_file(folder):
     """Return a random file from the specified folder."""
     folder = os.path.expanduser(folder)
     if os.path.isdir(folder):
-        listFiles = [_f for _f in os.listdir(folder) if not os.path.isdir(os.path.join(folder, _f))]
+        listFiles = [_f for _f in os.listdir(
+            folder) if not os.path.isdir(os.path.join(folder, _f))]
         if len(listFiles) == 0:
             return 'No Files found in {}'.format(folder)
         return random.choice(listFiles)
@@ -53,9 +59,11 @@ def start_eel(develop):
 
     # These will be queued until the first connection is made, but won't be repeated on a page reload
     say_hello_py('Python World!')
-    eel.say_hello_js('Python World!')   # Call a JavaScript function (must be after `eel.init()`)
+    # Call a JavaScript function (must be after `eel.init()`)
+    eel.say_hello_js('Python World!')
 
-    eel.show_log('https://github.com/samuelhwilliams/Eel/issues/363 (show_log)')
+    eel.show_log(
+        'https://github.com/samuelhwilliams/Eel/issues/363 (show_log)')
 
     eel_kwargs = dict(
         host='localhost',
