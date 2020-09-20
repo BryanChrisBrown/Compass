@@ -47,13 +47,16 @@ def start_eel(develop):
     """Start Eel with either production or development configuration."""
 
     if develop:
-        directory = 'src'
+        directory = 'ns-compass/pages'
         app = None
         page = {'port': 3000}
     else:
         directory = 'build'
         app = 'chrome-app'
         page = 'index.html'
+        sys.exit(
+            "Production support is not implemented yet, please run this script with the `true` command line arg"
+        )
 
     eel.init(directory, ['.tsx', '.ts', '.jsx', '.js', '.html'])
 
