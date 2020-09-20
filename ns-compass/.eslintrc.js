@@ -23,9 +23,12 @@ module.exports = {
     'linebreak-style': 'off',
     quotes: 'warn',
     'react/jsx-filename-extension': 'off',
+    'react/destructuring-assignment': 'off',
     'no-use-before-define': 'warn',
     'space-before-function-paren': 'off',
     camelcase: 'off',
     'jsx-a11y/anchor-is-valid': 'off',
+    'jsx-a11y/click-events-have-key-events': 'off',
+    'jsx-a11y/interactive-supports-focus': 'off',
   },
 };
