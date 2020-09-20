@@ -4,6 +4,39 @@
 
 $bg-main: linear-gradient(180deg, #333333 0%, #0b0b0b 100%)
 
+.ns-background
+    background: $bg-main
+
+.nsbg-container
+  z-index: -1
+  position: absolute
+  left: 0%
+  right: 0%
+  top: 0%
+  bottom: 0%
+  display: flex
+  flex-direction: column
+  justify-content: center
+  align-items: center
+  overflow: hidden
+  background: $bg-main
+
+.nsbg-circle
+  margin: auto
+  position: absolute
+  border-radius: 50%
+  width: 120vh
+  max-width: clamp(550px, 70vw, 750px)
+  max-height: clamp(550px, 70vw, 750px)
+  min-width: 550px
+  min-height: 550px
+  height: 120vh
+  display: flex
+  justify-content: center
+  align-items: center
+  overflow: hidden
+  border: 4px solid #07d981
+  box-sizing: border-box
 
 .ns-button
     padding-left: 15px
@@ -25,6 +58,82 @@ $bg-main: linear-gradient(180deg, #333333 0%, #0b0b0b 100%)
 .text-normal
     color: inherit
 
+.fullscreen
+  position: absolute
+  left: 0%
+  right: 0%
+  top: 0%
+  bottom: 0%
+  width: 100%
+  height: 100%
+
+.ns-title 
+  position: absolute
+  font-family: Overpass, sans-serif
+  font-style: normal
+  font-weight: bold
+  top: 50%
+  left: 50%
+  transform: translate(-50%, -50%)
+  font-size: 1.2em
+  vertical-align: middle
+  align-items: center
+  text-align: center
+  letter-spacing: -0.015em
+  color: #ffffff
+  transition: all 2s ease-in-out
+  h1
+    font-size: 3em
+    margin-bottom: 20px
+  p
+    font-size: 2em
+.ns-line
+  top: -10px
+  margin: 0px 0px 20px
+  position: relative
+  left: 50%
+  transform: translateX(-50%)
+  height: 2px
+  width: 30vh
+  background: #07d981
+
 body
-    background: $bg-main
     color: white
+    width: 100%
+    height: 100%
+    background-repeat: no-repeat
+
+.loader-msg span
+    font-family: inherit
+    animation: blink-loader 1.5s infinite
+.loader-msg span:nth-child(2)
+    animation-delay: 0.2s
+.loader-msg span:nth-child(3)
+    animation-delay: 0.4s
+    
+.bg-animated
+    animation: blur-bg 2s forwards
+@keyframes blink-loader 
+    0% 
+      opacity: .2
+    20% 
+      opacity: 1
+    100% 
+      opacity: .2
+@keyframes blur-bg
+  0%
+    -webkit-filter: blur(0px)
+    -moz-filter: blur(0px)
+    -o-filter: blur(0px)
+    -ms-filter: blur(0px)
+    filter: blur(0px)
+    width: 120vh
+    height: 120vh
+  100% 
+    -webkit-filter: blur(14px)
+    -moz-filter: blur(14px)
+    -o-filter: blur(14px)
+    -ms-filter: blur(14px)
+    filter: blur(14px)
+    transform: scale(2,2)
+  
