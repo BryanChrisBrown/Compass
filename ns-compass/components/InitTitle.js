@@ -1,6 +1,43 @@
 import React from 'react';
 // import PropTypes from 'prop-types';
+<<<<<<< Updated upstream
 import Link from 'next/link';
+=======
+import Link from "next/link";
+import { useRouter } from "next/router";
+
+// class LoadingProgress extends React.Component {
+//   constructor(props) {
+//     super(props)
+//     this.state = { loading: true }
+//   }
+
+//   render() {
+//     const loading = this.state.loading
+
+//     return (
+//       <div
+//         onAnimationEnd={() => Link(href="/home")}
+//         className={'loadingProgress'}>
+//       </div>
+//     )
+//   }
+// }
+
+function LoadingProgress() {
+  const router = useRouter();
+  return (
+    <div
+      className={"loadingProgress"}
+      onAnimationEnd={() =>
+        setTimeout(() => {
+          router.push("/home");
+        }, 1100)
+      }
+    ></div>
+  );
+}
+>>>>>>> Stashed changes
 
 class Title extends React.Component {
   constructor(props) {
@@ -33,6 +70,7 @@ class Title extends React.Component {
 
   render() {
     return (
+<<<<<<< Updated upstream
     // eslint-disable-next-line no-unused-vars
       <div role="button" className="ns-title">
         <h1>Compass</h1>
@@ -54,6 +92,29 @@ class Title extends React.Component {
                       <span>.</span>
                     </p>
                   )}
+=======
+      // eslint-disable-next-line no-unused-vars
+      <div className="fullscreen">
+        <div role="button" className="ns-title">
+          <h1>Compass</h1>
+          <div className="ns-line" />
+          <div style={{ top: -40 }}>
+            <p>Powered by Community</p>
+          </div>
+          <div>
+            <div className="loadingBackground">
+              <LoadingProgress />
+            </div>
+            {!this.state.doneLoading && (
+              <p className="loader-msg">
+                {this.state.loadingString}
+                <span>.</span>
+                <span>.</span>
+                <span>.</span>
+              </p>
+            )}
+          </div>
+>>>>>>> Stashed changes
         </div>
       </div>
     );
