@@ -9,7 +9,6 @@
   },
   "dependencies": {
     "better-docs": "^2.3.2",
-    "eslint-config-airbnb-base": "^14.2.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-config-standard": "^14.1.1",
     "eslint-plugin-node": "^11.1.0",
@@ -27,11 +26,6 @@
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^4.1.1",
     "@typescript-eslint/parser": "^4.1.1",
-<<<<<<< Updated upstream
-    "eslint": "^7.9.0",
-    "eslint-config-airbnb": "^18.2.0",
-=======
->>>>>>> Stashed changes
     "eslint-plugin-import": "^2.22.0",
     "eslint-plugin-jsx-a11y": "^6.3.1",
     "eslint-plugin-react": "^7.20.6",
