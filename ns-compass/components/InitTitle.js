@@ -1,36 +1,23 @@
 import React from "react";
 // import PropTypes from 'prop-types';
+
+=======
 import Link from "next/link";
 import { useRouter } from 'next/router'
 
-// class LoadingProgress extends React.Component {
-//   constructor(props) {
-//     super(props)
-//     this.state = { loading: true }
-//   }
-
-//   render() {
-//     const loading = this.state.loading
-
-//     return (
-//       <div
-//         onAnimationEnd={() => Link(href="/home")}
-//         className={'loadingProgress'}>
-//       </div>
-//     )
-//   }
-// }
-
-function LoadingProgress() { 
-const router = useRouter()
-return (
-  <div
-    className={'loadingProgress'}
-    onAnimationEnd={() => router.push('/home')}
-    >
-  </div>
-)}
-
+function LoadingProgress() {
+  const router = useRouter();
+  return (
+    <div
+      className={"loadingProgress"}
+      onAnimationEnd={() =>
+        setTimeout(() => {
+          router.push("/home");
+        }, 1100)
+      }
+    ></div>
+  );
+}
 
 class Title extends React.Component {
   constructor(props) {
@@ -71,7 +58,9 @@ class Title extends React.Component {
             <p>Powered by Community</p>
           </div>
           <div>
-          <div className="loadingBackground"><LoadingProgress/></div>
+            <div className="loadingBackground">
+              <LoadingProgress />
+            </div>
             {!this.state.doneLoading && (
               <p className="loader-msg">
                 {this.state.loadingString}

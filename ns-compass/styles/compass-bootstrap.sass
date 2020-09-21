@@ -5,7 +5,7 @@
 $bg-main: linear-gradient(180deg, #333333 0%, #0b0b0b 100%)
 
 .ns-background
-    background: $bg-main
+  background: $bg-main
 
 .nsbg-container
   z-index: -1
@@ -39,24 +39,24 @@ $bg-main: linear-gradient(180deg, #333333 0%, #0b0b0b 100%)
   box-sizing: border-box
 
 .ns-button
-    padding-left: 15px
-    padding-right: 15px
-    padding-top: 7px
-    padding-bottom: 5px
-    background-color: rgba(102, 102, 102, 0.8)
-    border: 1px solid #07d981
-    box-sizing: border-box
-    box-shadow: 0px 0px 6px 1px rgba(0, 0, 0, 0.25)
-    border-radius: 45px
-    text-decoration: none
-    font-family: 'Overpass', sans-serif
-    font-size: 0.3em
+  padding-left: 15px
+  padding-right: 15px
+  padding-top: 7px
+  padding-bottom: 5px
+  background-color: rgba(102, 102, 102, 0.8)
+  border: 1px solid #07d981
+  box-sizing: border-box
+  box-shadow: 0px 0px 6px 1px rgba(0, 0, 0, 0.25)
+  border-radius: 45px
+  text-decoration: none
+  font-family: 'Overpass', sans-serif
+  font-size: 0.3em
 
 .text-white
-    color: white
+  color: white
 
 .text-normal
-    color: inherit
+  color: inherit
 
 .fullscreen
   position: absolute
@@ -98,18 +98,18 @@ $bg-main: linear-gradient(180deg, #333333 0%, #0b0b0b 100%)
   background: #07d981
 
 body
-    color: white
-    width: 100%
-    height: 100%
-    background-repeat: no-repeat
+  color: white
+  width: 100%
+  height: 100%
+  background-repeat: no-repeat
 
 .loader-msg span
-    font-family: inherit
-    animation: blink-loader 1.5s infinite
+  font-family: inherit
+  animation: blink-loader 1.5s infinite
 .loader-msg span:nth-child(2)
-    animation-delay: 0.2s
+  animation-delay: 0.2s
 .loader-msg span:nth-child(3)
-    animation-delay: 0.4s
+  animation-delay: 0.4s
   
 .loadingBackground
   margin: 50px auto
@@ -137,15 +137,23 @@ body
   100% 
     width: 10.8em
     
+.blurred
+  -webkit-filter: blur(14px)
+  -moz-filter: blur(14px)
+  -o-filter: blur(14px)
+  -ms-filter: blur(14px)
+  filter: blur(14px)
+  transform: scale(2,2)
+
 .bg-animated
-    animation: blur-bg 2s forwards
+  animation: blur-bg 2s forwards
 @keyframes blink-loader 
-    0% 
-      opacity: .2
-    20% 
-      opacity: 1
-    100% 
-      opacity: .2
+  0%
+    opacity: .2
+  20%
+    opacity: 1
+  100%
+    opacity: .2
 @keyframes blur-bg
   0%
     -webkit-filter: blur(0px)
