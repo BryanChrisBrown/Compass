@@ -5,7 +5,7 @@ import Head from "next/head";
 import Title from "../components/InitTitle";
 import Bgrnd from "../components/InitBg";
 
-export default function Loading() {
+export default function Hardware() {
   // eslint-disable-next-line prefer-const
   let [isDone, setDone] = useState(false);
   // this is a callback function that is sent to our

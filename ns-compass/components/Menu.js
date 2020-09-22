@@ -2,18 +2,12 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-function Button(props) {
-  const { color, children, isActive, width } = props;
+function NSMenu(props) {
+  const { children } = props;
 
   return (
     <div>
-      <button
-        type="button"
-        style={{ width: width }}
-        className={`ns-button text-${color} ${isActive ? "btn-active" : ""}`}
-      >
-        {children}
-      </button>
+      <p>filler</p>
     </div>
   );
 }

@@ -4,6 +4,16 @@
 
 $bg-main: linear-gradient(180deg, #333333 0%, #0b0b0b 100%)
 
+// Our main styles
+
+body
+  color: white
+  width: 100%
+  height: 100%
+  background-repeat: no-repeat
+
+// Creating our background, it's container, and the fancy cirlce element
+
 .ns-background
   background: $bg-main
 
@@ -38,12 +48,22 @@ $bg-main: linear-gradient(180deg, #333333 0%, #0b0b0b 100%)
   border: 4px solid #07d981
   box-sizing: border-box
 
+.ns-container
+  position: relative
+  left: 50%
+  transform: translateX(-50%)
+  margin-top: 2em
+  width: 90%
+  height: 80%
+
+// Our button component
+
 .ns-button
   padding-left: 15px
   padding-right: 15px
   padding-top: 7px
   padding-bottom: 5px
-  background-color: rgba(102, 102, 102, 0.8)
+  background-color: rgba(88, 88, 88, 0.8)
   border: 1px solid #07d981
   box-sizing: border-box
   box-shadow: 0px 0px 6px 1px rgba(0, 0, 0, 0.25)
@@ -51,24 +71,34 @@ $bg-main: linear-gradient(180deg, #333333 0%, #0b0b0b 100%)
   text-decoration: none
   font-family: 'Overpass', sans-serif
   font-size: 0.3em
+  cursor: pointer
 
-.text-white
-  color: white
+.btn-active
+  box-shadow: 0px 0px 12px 3px #07D981
+  border: none
 
-.text-normal
-  color: inherit
+.ns-blob
+  position: relative
+  background-color: #666666
+  border-radius: 45px
+  width: 100%
+  height: 100%
 
-.fullscreen
-  position: absolute
-  left: 0%
-  right: 0%
-  top: 0%
-  bottom: 0%
-  display: flex
-  flex-direction: column
-  justify-content: center
-  align-items: center
+.ns-blob-child
+  height: 60vh
+  p
+    position: absolute
+    bottom: 1em
+    margin-left: 20px
 
+.ns-3d
+  position: relative
+  top: 20px
+
+canvas
+  width: 80%
+  height: 80%
+// Our line/title components for the loading screen
 .ns-title 
   position: relative
   font-family: Overpass, sans-serif
@@ -97,11 +127,43 @@ $bg-main: linear-gradient(180deg, #333333 0%, #0b0b0b 100%)
   width: 18em
   background: #07d981
 
-body
+// Nav component styles
+.ns-nav
+  margin-top: 0.3em
+  align-content: space-between
+  justify-content: space-evenly
+  display: inline-flex
+  flex-direction: row
+  font-size: 3.5em
+  
+// Flex classes
+.ns-flex
+  display: inline-flex
+
+// Width Classes
+.full-width
+  width: 100vw
+
+// Text color classes
+
+.text-white
   color: white
-  width: 100%
-  height: 100%
-  background-repeat: no-repeat
+
+.text-normal
+  color: inherit
+
+// Display/format helper classes
+
+.fullscreen
+  position: absolute
+  left: 0%
+  right: 0%
+  top: 0%
+  bottom: 0%
+  display: flex
+  flex-direction: column
+  justify-content: center
+  align-items: center
 
 .loader-msg span
   font-family: inherit
@@ -131,12 +193,7 @@ body
   box-sizing: border-box
   border-radius: 45px
   animation: LoadingAnimation 2.5s 2.2s forwards cubic-bezier(0.025, 0.82, 0.25, 1)
-@keyframes LoadingAnimation 
-  0% 
-    width: 10px
-  100% 
-    width: 10.8em
-    
+  
 .blurred
   -webkit-filter: blur(14px)
   -moz-filter: blur(14px)
@@ -147,6 +204,9 @@ body
 
 .bg-animated
   animation: blur-bg 2s forwards
+
+// Animations
+
 @keyframes blink-loader 
   0%
     opacity: .2
@@ -170,6 +230,12 @@ body
     -ms-filter: blur(14px)
     filter: blur(14px)
     transform: scale(2,2)
-  
+
+@keyframes LoadingAnimation 
+  0% 
+    width: 10px
+  100% 
+    width: 10.8em
+   
 
 

@@ -1,32 +1,64 @@
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable class-methods-use-this */
 import Head from "next/head";
-import React from "react";
+import React, { useRef, useState, Suspense } from "react";
 import styles from "../styles/Home.module.css";
 import NSButton from "../components/Button";
 import Bgrnd from "../components/InitBg";
+import NavBar from "../components/NavBar";
+import Blob from "../components/Blob";
+import { Canvas, useFrame } from "react-three-fiber";
+import { config, useSpring } from "react-spring";
+import * as THREE from "three";
+//import { useSpring, a } from "react-spring/three";
+function PlaceholderCube(props) {
+  // This reference will give us direct access to the mesh
+  const mesh = useRef();
+
+  // Set up state for the hovered and active state
+  const [hovered, setHover] = useState(false);
+  const [active, setActive] = useState(false);
+
+  // Rotate mesh every frame, this is outside of React without overhead
+  useFrame(() => {
+    mesh.current.rotation.x = mesh.current.rotation.y += 0.02;
+  });
+  const colorSp = useSpring({
+    to: "lightpink",
+    from: "red",
+  });
+  return (
+    <mesh
+      {...props}
+      ref={mesh}
+      onClick={(e) => setActive(!active)}
+      onPointerOver={(e) => setHover(true)}
+      onPointerOut={(e) => setHover(false)}
+    >
+      <boxBufferGeometry attach="geometry" args={[1, 1, 1]} />
+      <meshStandardMaterial attach="material" color={colorSp} />
+    </mesh>
+  );
+}
+
+function ThreeCanvas(props) {
+  return (
+    <div className="ns-three-canvas">
+      <Canvas>
+        <ambientLight intensity={0.2} />
+        <spotLight position={[14, 10, 10]} angle={0.15} penumbra={1.1} />
+        <pointLight position={[15, 1, -10]} />
+        <PlaceholderCube scale={[3, 3, 3]} position={[0, 0, 0]} />
+      </Canvas>
+    </div>
+  );
+}
 
 export default class AppHome extends React.Component {
   // WARN: must use window.eel to keep parse-able eel.expose{...}
 
   componentDidMount() {
-    window.eel.set_host("ws://localhost:8080");
-    window.eel.expose(this.sayHelloJS, "say_hello_js");
-    window.eel.expose(this.show_log, "show_log");
-
-    // Test calling sayHelloJS, then call the corresponding Python function
-    this.sayHelloJS("Javascript World!");
-    window.eel.say_hello_py("Javascript World!");
-  }
-
-  // Test anonymous function when minimized. See https://github.com/samuelhwilliams/Eel/issues/363
-  show_log(msg) {
-    console.log(msg);
-  }
-
-  // Expose the `sayHelloJS` function to Python as `say_hello_js`
-  sayHelloJS(x) {
-    console.log(`Hello from ${x}`);
+    //window.eel.set_host("ws://localhost:8080");
   }
 
   render() {
@@ -36,49 +68,23 @@ export default class AppHome extends React.Component {
           <title>Compass | Home</title>
           <link rel="icon" href="/favicon.ico" />
         </Head>
-
-        <main className={styles.main}>
-          <h1 className={styles.title}>
-            Woah, it's <a href="https://nextjs.org">Next.js!</a>
-            <NSButton color="white">Test Button Component</NSButton>
-          </h1>
-
-          <p className={styles.description}>
-            Get started by editing{" "}
-            <code className={styles.code}>pages/home.js</code>
-            <br />
-            Also, please ignore the block at the bottom of the page, next.js
-            adds that in for some reason
-          </p>
-
-          <div className={styles.grid}>
-            <a href="https://nextjs.org/docs" className={styles.card}>
-              <h3>Documentation &rarr;</h3>
-              <p>Find in-depth information about Next.js features and API.</p>
-            </a>
-
-            <a href="https://nextjs.org/learn" className={styles.card}>
-              <h3>Learn &rarr;</h3>
-              <p>Learn about Next.js in an interactive course with quizzes!</p>
-            </a>
-
-            <a
-              href="https://github.com/vercel/next.js/tree/master/examples"
-              className={styles.card}
-            >
-              <h3>Examples &rarr;</h3>
-              <p>Discover and deploy boilerplate example Next.js projects.</p>
-            </a>
-
-            <a
-              href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-              className={styles.card}
-            >
-              <h3>Deploy &rarr;</h3>
-              <p>
-                Instantly deploy your Next.js site to a public URL with Vercel.
-              </p>
-            </a>
+        <NavBar />
+        <main>
+          <div className="ns-container">
+            <Blob>
+              <div>
+                <div className="ns-3d">
+                  <ThreeCanvas />
+                </div>
+                <p>
+                  <b>Project Northstar</b> <br />
+                  This Launcher serves as a starting point for Northstar
+                  hardware and software. It allows for easy customization of the
+                  calibration scripts, setup for SteamVR and Monado. It also
+                  provides a dashboard for hardware detection and debugging.
+                </p>
+              </div>
+            </Blob>
           </div>
         </main>
         <Bgrnd className="blurred" />

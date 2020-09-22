@@ -4,7 +4,6 @@ import PropTypes from "prop-types";
 
 function Background(props) {
   const { runAnim } = props;
-  console.log("cur props", props);
   return (
     <div className="nsbg-container">
       <animated.div

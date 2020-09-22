@@ -1,9 +1,7 @@
 import React from "react";
 // import PropTypes from 'prop-types';
-
-=======
 import Link from "next/link";
-import { useRouter } from 'next/router'
+import { useRouter } from "next/router";
 
 function LoadingProgress() {
   const router = useRouter();
@@ -24,7 +22,7 @@ class Title extends React.Component {
     super(props);
     this.state = {
       doneLoading: false,
-      loadingString: "Beaming up Scotty",
+      loadingString: "Calibrating Flux Capacitors",
     };
   }
 
@@ -39,7 +37,6 @@ class Title extends React.Component {
     async function simLoading(thisParam) {
       const self = thisParam;
       await setTimeout(() => {
-        console.log("setstate");
         self.setState({ doneLoading: true });
         self.props.loaderCallback(true);
       }, 4000);
