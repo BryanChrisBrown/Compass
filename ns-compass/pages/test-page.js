@@ -26,6 +26,15 @@ export default class AppHome extends React.Component {
             <p active="third">3</p>
             <p active="fourth">4</p>
           </NSMenu>
+          <br />
+          <br />
+          <br />
+          <NSMenu>
+            <p active="apple">apple</p>
+            <p active="orange">orange</p>
+            <p active="strawberry">strawberry</p>
+            <p active="mango">mango</p>
+          </NSMenu>
         </main>
         <Bgrnd className="blurred" />
       </div>

@@ -11,16 +11,25 @@ import { useRouter } from "next/router";
   When you click on the "help" button, it'll show that content, and by setting the "active prop" to `help,` it will be highlighted as the current menu item
 */
 
-/* Todo, add suport for multiple menu's in a page. This will likely be done by checking if any of a menu's `active` props are satisfied or not, 
-   if one isn't and there's an `activeTab` query in the URL, we know that there's another menu in use and the current menu needs to have its index
-   highlighted
-  */
 function NSMenu(props) {
   const { children } = props;
+
   const router = useRouter();
   let isIndex = false;
   if (!router.query.activeTab) {
     isIndex = true;
+  }
+
+  function checkExternalState() {
+    const extStateChecker = children.filter(
+      (ele) => ele.props.active == router.query.activeTab
+    );
+    if (!extStateChecker.length) return true;
+  }
+  if (router.query.activeTab) {
+    if (checkExternalState()) {
+      isIndex = true;
+    }
   }
   const renderedItems = children.map((i, index) => {
     return (
@@ -33,7 +42,7 @@ function NSMenu(props) {
         key={index}
       >
         <Link href={{ query: { activeTab: `${i.props.active}` } }}>
-          <a>{i}</a>
+          <a className="no-underline">{i}</a>
         </Link>
       </li>
     );
