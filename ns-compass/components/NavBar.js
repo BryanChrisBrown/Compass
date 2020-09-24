@@ -4,10 +4,6 @@ import PropTypes from "prop-types";
 import NSButton from "./Button";
 import Link from "next/link";
 import { useRouter } from "next/router";
-/**
- *
- * @param {string} color - Text color to be rendered
- */
 
 function NavBar(props) {
   //const { color, children } = props;
