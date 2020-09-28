@@ -23,9 +23,17 @@ function NavBar(props) {
             </NSButton>
           </a>
         </Link>
-        <NSButton width="150px" color="white">
-          Hardware
-        </NSButton>
+        <Link href="/hardware">
+          <a>
+            <NSButton
+              isActive={route === "/hardware" ? true : false}
+              width="150px"
+              color="white"
+            >
+              Hardware
+            </NSButton>
+          </a>
+        </Link>
         <NSButton width="150px" color="white">
           Software
         </NSButton>

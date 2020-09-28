@@ -12,21 +12,23 @@ import { useRouter } from "next/router";
 */
 
 function NSMenu(props) {
-  const { children } = props;
+  const { children, menuID } = props;
 
   const router = useRouter();
+  const tabID = `activeTab${menuID}`;
   let isIndex = false;
-  if (!router.query.activeTab) {
+  if (!router.query[tabID]) {
     isIndex = true;
   }
+  // this checker acts as a fallback if a menuID isn't supplied
 
   function checkExternalState() {
     const extStateChecker = children.filter(
-      (ele) => ele.props.active == router.query.activeTab
+      (ele) => ele.props.active == router.query[tabID]
     );
     if (!extStateChecker.length) return true;
   }
-  if (router.query.activeTab) {
+  if (!router.query[tabID]) {
     if (checkExternalState()) {
       isIndex = true;
     }
@@ -35,13 +37,17 @@ function NSMenu(props) {
     return (
       <li
         className={`ns-menu-item ${
-          i.props.active == router.query.activeTab || (isIndex && index === 0)
+          i.props.active == router.query[tabID] || (isIndex && index === 0)
             ? "ns-menu-item-active"
             : ""
         }`}
         key={index}
       >
-        <Link href={{ query: { activeTab: `${i.props.active}` } }}>
+        <Link
+          href={{
+            query: { [tabID]: `${i.props.active}` },
+          }}
+        >
           <a className="no-underline">{i}</a>
         </Link>
       </li>
@@ -50,11 +56,14 @@ function NSMenu(props) {
   return <ul className="ns-menu">{renderedItems}</ul>;
 }
 
+//this doesn't really matter but I don't want to remove it cause it'll prolly break everything
+
 NSMenu.defaultProps = {
   children: null,
   color: "normal",
   isActive: false,
   width: "auto",
+  menuID: "",
 };
 
 NSMenu.propTypes = {
