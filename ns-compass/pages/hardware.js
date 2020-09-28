@@ -2,26 +2,72 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState } from "react";
 import Head from "next/head";
-import Title from "../components/InitTitle";
+import NSButton from "../components/Button";
 import Bgrnd from "../components/InitBg";
-
-export default function Hardware() {
-  // eslint-disable-next-line prefer-const
-  let [isDone, setDone] = useState(false);
-  // this is a callback function that is sent to our
-  // title component as a prop. When loading is complete,
-  // it calls this function and our local state variable
-  // is updated
-  const loadingCallback = (callbackData) => {
-    if (callbackData) setDone((isDone = true));
-  };
+import NavBar from "../components/NavBar";
+import Blob from "../components/Blob";
+import NSMenu from "../components/Menu";
+function Hardware() {
   return (
-    <div>
+    <div className="container">
       <Head>
-        <title>Loading compass...</title>
+        <title>Compass | Hardware</title>
+        <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Title loaderCallback={loadingCallback} />
-      <Bgrnd runAnim={isDone} />
+      <NavBar />
+      <main>
+        <div className="ns-container">
+          <div
+            style={{ height: "168px" }}
+            className="row ns-flex justify-between margin-bottom-2em"
+          >
+            <div>
+              <NSMenu menuID={"1"}>
+                <p active="leapmotion">LeapMotion</p>
+                <p active="connection">Connection</p>
+                <p active="bandwidth">Bandwidth</p>
+                <p active="tracking">Tracking</p>
+              </NSMenu>
+            </div>
+            <div style={{ width: "20vw" }}>
+              <Blob>
+                <p>LeapMotion View</p>
+              </Blob>
+            </div>
+            <div style={{ width: "20vw" }}>
+              <Blob>
+                <p>LeapMotion Output</p>
+              </Blob>
+            </div>
+          </div>
+          <div
+            style={{ height: "168px" }}
+            className="row ns-flex justify-between"
+          >
+            <div>
+              <NSMenu menuID={"2"}>
+                <p active="realsense">RealSense</p>
+                <p active="connection">Connection</p>
+                <p active="bandwidth">Bandwidth</p>
+                <p active="tracking">Tracking</p>
+              </NSMenu>
+            </div>
+            <div style={{ width: "20vw" }}>
+              <Blob>
+                <p>Realsense View</p>
+              </Blob>
+            </div>
+            <div style={{ width: "20vw" }}>
+              <Blob>
+                <p>Realsense Output</p>
+              </Blob>
+            </div>
+          </div>
+        </div>
+      </main>
+      <Bgrnd className="blurred" />
     </div>
   );
 }
+
+export default Hardware;

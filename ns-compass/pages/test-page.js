@@ -20,7 +20,7 @@ export default class AppHome extends React.Component {
         </Head>
         <NavBar />
         <main className={styles.main}>
-          <NSMenu>
+          <NSMenu menuID={"1"}>
             <p active="first">First</p>
             <p active="second">second</p>
             <p active="third">3</p>
@@ -29,7 +29,7 @@ export default class AppHome extends React.Component {
           <br />
           <br />
           <br />
-          <NSMenu>
+          <NSMenu menuID={"2"}>
             <p active="apple">apple</p>
             <p active="orange">orange</p>
             <p active="strawberry">strawberry</p>
