@@ -153,6 +153,7 @@ class CV2Camera(Camera):
         self._cap = cv2.VideoCapture(index)
         self._cap.set(cv2.CAP_PROP_FRAME_WIDTH , self._frameWidth)
         self._cap.set(cv2.CAP_PROP_FRAME_HEIGHT, self._frameHeight)
+        self.readNewFrame() #first frame not reliable
         return
         
     def readCapture(self):
@@ -208,7 +209,6 @@ class CalibrationManager(Borg):
         return
         
     def createMonitorMaskRoutine(self, threshold=53, displayTimeMs=200):
-        self.camera.readNewFrame()#first frame not reliable
         aw = self.helpers.allWhite(*self.displayResolution)
         ad = self.helpers.allDark(*self.displayResolution)
         cv2.imshow(self.windowName, aw)
