@@ -58,6 +58,7 @@ body
   margin-top: 2em
   width: 90%
   height: 80%
+  //display: flex
 
 // Our button component
 
@@ -88,7 +89,7 @@ body
   height: 100%
 
 .ns-blob-child
-  height: 60vh
+  //height: 60vh
   p
     position: absolute
     bottom: 1em
@@ -167,7 +168,18 @@ canvas
   
 // Flex classes
 .ns-flex
-  display: inline-flex
+  display: flex
+
+.row
+  flex-direction: row
+.justify-between
+  justify-content: space-between
+
+.justify-start
+  justify-content: flex-start
+
+.justify-evenly
+  justify-content: space-evenly
 
 // Width Classes
 .full-width
@@ -193,6 +205,9 @@ canvas
   flex-direction: column
   justify-content: center
   align-items: center
+
+.margin-bottom-2em
+  margin-bottom: 2em
 
 .no-underline
   text-decoration: none
