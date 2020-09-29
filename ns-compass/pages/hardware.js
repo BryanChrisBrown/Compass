@@ -7,7 +7,8 @@ import Bgrnd from "../components/InitBg";
 import NavBar from "../components/NavBar";
 import Blob from "../components/Blob";
 import NSMenu from "../components/Menu";
-function Hardware() {
+
+export default function Hardware() {
   return (
     <div className="container">
       <Head>
@@ -18,10 +19,11 @@ function Hardware() {
       <main>
         <div className="ns-container">
           <div
-            style={{ height: "168px" }}
-            className="row ns-flex justify-between margin-bottom-2em"
+            style={{ height: "280px" }}
+            className="row ns-flex justify-between"
           >
-            <div>
+            <div
+            className="column ns-flex justify-between">
               <NSMenu menuID={"1"}>
                 <p active="leapmotion">LeapMotion</p>
                 <p active="connection">Connection</p>
@@ -29,35 +31,38 @@ function Hardware() {
                 <p active="tracking">Tracking</p>
               </NSMenu>
             </div>
-            <div style={{ width: "20vw" }}>
+            <div style={{ width: "32vw" }}>
               <Blob>
                 <p>LeapMotion View</p>
               </Blob>
             </div>
-            <div style={{ width: "20vw" }}>
+            <div style={{ width: "32vw" }}>
               <Blob>
                 <p>LeapMotion Output</p>
               </Blob>
             </div>
           </div>
+
+          <div style={{height: "40px"}}/>
+
           <div
-            style={{ height: "168px" }}
+            style={{ height: "280px" }}
             className="row ns-flex justify-between"
           >
             <div>
-              <NSMenu menuID={"2"}>
+              <NSMenu menuID={"2"} className="column ns-flex justify-between">
                 <p active="realsense">RealSense</p>
                 <p active="connection">Connection</p>
                 <p active="bandwidth">Bandwidth</p>
                 <p active="tracking">Tracking</p>
               </NSMenu>
             </div>
-            <div style={{ width: "20vw" }}>
+            <div style={{ width: "32vw" }}>
               <Blob>
                 <p>Realsense View</p>
               </Blob>
             </div>
-            <div style={{ width: "20vw" }}>
+            <div style={{ width: "32vw" }}>
               <Blob>
                 <p>Realsense Output</p>
               </Blob>
@@ -69,5 +74,3 @@ function Hardware() {
     </div>
   );
 }
-
-export default Hardware;

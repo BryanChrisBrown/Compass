@@ -44,7 +44,7 @@ function NavBar(props) {
               width="150px"
               color="white"
             >
-              TestPage
+              Learn
             </NSButton>
           </a>
         </Link>
