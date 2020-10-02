@@ -105,7 +105,7 @@ class Camera(metaclass=abc.ABCMeta):
     def calibration(self) -> dict:
         return
         
-    def readNewFrame(self, waitTime=0.1, tryCount=10):
+    def readNewFrame(self, waitTime=0.1, tryCount=50):
         for _ in range(tryCount):
             ret, frame = self.readCapture()
             if(ret is True):
@@ -136,11 +136,7 @@ class T265Camera(Camera): #can be potentially refactored to generic realsense ca
     @property
     def calibration(self):
         return np.load("./cameraCalibration_rs.npz", ) #TODO consider read always vs init
-        
-    def readNewFrame(self, waitTime=0.1, tryCount=10):
-        self.readCapture() #reseting newFrame flag in intelutils
-        return Camera.readNewFrame(self, waitTime, tryCount)
-        
+    
     @property
     def resolution(self):
         return (self._frameHeight, self._frameWidth)
@@ -166,11 +162,11 @@ class CV2Camera(Camera):
     @property
     def resolution(self):
         return (self._frameHeight, self._frameWidth)
-      
+    
     @property
     def calibration(self):
         return np.load("./cameraCalibration_cv2.npz", ) #TODO consider read always vs init
-        
+    
     def readNewFrame(self, waitTime=0.1, tryCount=10):
         return cv2.cvtColor(Camera.readNewFrame(self, waitTime, tryCount), cv2.COLOR_BGR2GRAY)
 
@@ -275,14 +271,12 @@ if __name__ == '__main__':
     cm = CalibrationManager()
     cm.setDisplayResolution(1920, 1080)
     cm.createFullscreenWindow(1920, 0)
-    cv2.imshow(cm.windowName, ch.allWhite(*cm.displayResolution))
-    camera = CV2Camera(1, 720, 2560)
-    fisheye = False
-    #camera = T265Camera()
-    #fisheye = True #move to camera properties? need it also for offline (no camera)
-    cv2.waitKey(200)
+    #camera = CV2Camera(1, 720, 2560)
+    #fisheye = False
+    camera = T265Camera()
+    fisheye = True #move to camera properties? need it also for offline (no camera)
     cm.setActiveCamera(camera)
-    mask = cm.createMonitorMaskRoutine(150, 1000)
+    mask = cm.createMonitorMaskRoutine(100)
     cv2.imshow("res", mask * 100) #binary mask
     cv2.waitKey(200)
     widthBits = ch.widthBits(*cm.displayResolution)
