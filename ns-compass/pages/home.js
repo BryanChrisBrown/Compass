@@ -57,8 +57,14 @@ function ThreeCanvas(props) {
 export default class AppHome extends React.Component {
   // WARN: must use window.eel to keep parse-able eel.expose{...}
 
-  componentDidMount() {
-    //window.eel.set_host("ws://localhost:8080");
+  async componentDidMount() {
+    window.eel.set_host("ws://localhost:8080");
+    window.eel.say_hello_py("JavaScript Land");
+    window.eel.get_os_data()(printOSData);
+
+    function printOSData(n) {
+      console.log("Got this from Python: " + n);
+    }
   }
 
   render() {
