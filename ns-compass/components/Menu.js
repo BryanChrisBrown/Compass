@@ -53,7 +53,11 @@ function NSMenu(props) {
       </li>
     );
   });
-  return <ul className="ns-menu">{renderedItems}</ul>;
+  return (
+    <div className="ns-menu-container">
+      <ul className="ns-menu">{renderedItems}</ul>
+    </div>
+  );
 }
 
 //this doesn't really matter but I don't want to remove it cause it'll prolly break everything

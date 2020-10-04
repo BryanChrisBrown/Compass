@@ -19,11 +19,10 @@ export default function Hardware() {
       <main>
         <div className="ns-container">
           <div
-            style={{ height: "280px" }}
+            style={{ height: "300px" }}
             className="row ns-flex justify-between"
           >
-            <div
-            className="column ns-flex justify-between">
+            <div className="column ns-flex justify-between">
               <NSMenu menuID={"1"}>
                 <p active="leapmotion">LeapMotion</p>
                 <p active="connection">Connection</p>
@@ -43,14 +42,14 @@ export default function Hardware() {
             </div>
           </div>
 
-          <div style={{height: "40px"}}/>
+          <div style={{ height: "40px" }} />
 
           <div
-            style={{ height: "280px" }}
+            style={{ height: "300px" }}
             className="row ns-flex justify-between"
           >
-            <div>
-              <NSMenu menuID={"2"} className="column ns-flex justify-between">
+            <div className="column ns-flex justify-between">
+              <NSMenu menuID={"2"}>
                 <p active="realsense">RealSense</p>
                 <p active="connection">Connection</p>
                 <p active="bandwidth">Bandwidth</p>
@@ -59,12 +58,12 @@ export default function Hardware() {
             </div>
             <div style={{ width: "32vw" }}>
               <Blob>
-                <p>Realsense View</p>
+                <p>RealSense View</p>
               </Blob>
             </div>
             <div style={{ width: "32vw" }}>
               <Blob>
-                <p>Realsense Output</p>
+                <p>RealSense Output</p>
               </Blob>
             </div>
           </div>
