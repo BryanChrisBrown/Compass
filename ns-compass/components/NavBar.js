@@ -34,13 +34,21 @@ function NavBar(props) {
             </NSButton>
           </a>
         </Link>
-        <NSButton width="150px" color="white">
-          Software
-        </NSButton>
-        <Link href="/test-page">
+        <Link href="/software">
           <a>
             <NSButton
-              isActive={route === "/test-page" ? true : false}
+              isActive={route === "/software" ? true : false}
+              width="150px"
+              color="white"
+            >
+              Software
+            </NSButton>
+          </a>
+        </Link>
+        <Link href="/learn">
+          <a>
+            <NSButton
+              isActive={route === "/learn" ? true : false}
               width="150px"
               color="white"
             >
