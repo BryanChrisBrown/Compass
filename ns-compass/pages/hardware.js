@@ -22,7 +22,7 @@ export default function Hardware() {
             style={{ height: "300px" }}
             className="row ns-flex justify-between"
           >
-            <div className="column ns-flex justify-between">
+            <div className="ns-flex justify-between">
               <NSMenu menuID={"1"}>
                 <p active="leapmotion">LeapMotion</p>
                 <p active="connection">Connection</p>
@@ -48,7 +48,7 @@ export default function Hardware() {
             style={{ height: "300px" }}
             className="row ns-flex justify-between"
           >
-            <div className="column ns-flex justify-between">
+            <div className="ns-flex justify-between">
               <NSMenu menuID={"2"}>
                 <p active="realsense">RealSense</p>
                 <p active="connection">Connection</p>

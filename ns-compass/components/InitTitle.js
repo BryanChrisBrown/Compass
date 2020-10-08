@@ -10,7 +10,7 @@ function LoadingProgress() {
       className={"loadingProgress"}
       onAnimationEnd={() =>
         setTimeout(() => {
-          router.push("/home");
+          router.replace("/home");
         }, 1100)
       }
     ></div>

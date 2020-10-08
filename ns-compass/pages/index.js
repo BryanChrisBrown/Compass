@@ -1,6 +1,6 @@
 /* eslint-disable class-methods-use-this */
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Head from "next/head";
 import Title from "../components/InitTitle";
 import Bgrnd from "../components/InitBg";
@@ -9,7 +9,12 @@ import { useRouter } from "next/router";
 export default function Loading() {
   // eslint-disable-next-line prefer-const
   const router = useRouter();
-
+  useEffect(() => {
+    /*console.warn(
+      "Prefetching home page, this can cause errors if the `router` instance hasn't loaded yet!"
+    );*/
+    router.prefetch("/home");
+  });
   let [isDone, setDone] = useState(false);
   // this is a callback function that is sent to our
   // title component as a prop. When loading is complete,

@@ -37,7 +37,7 @@ function NSMenu(props) {
     return (
       <li
         className={`ns-menu-item ${
-          i.props.active == router.query[tabID] || (isIndex && index === 0)
+          i.props.active == router.query[tabID] || /*isIndex &&*/ index === 0
             ? "ns-menu-item-active"
             : ""
         }`}

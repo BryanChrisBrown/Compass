@@ -58,7 +58,6 @@ export default class AppHome extends React.Component {
   // WARN: must use window.eel to keep parse-able eel.expose{...}
 
   async componentDidMount() {
-    window.eel.set_host("ws://localhost:8080");
     window.eel.say_hello_py("JavaScript Land");
     window.eel.get_os_data()(printOSData);
 
