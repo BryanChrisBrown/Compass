@@ -1,6 +1,6 @@
 # Compass for Northstar
 
-Compass is your one-stop-shop for setting up your Northstar device(s)! With an intuitive and rather sexy UI, setting up calibrations, installing drivers, and launching software _(coming soon!)_ is a breeze.
+Compass is your one-stop-shop for setting up your Northstar device(s)! With an intuitive and UI, setting up calibrations, installing drivers, and launching software _(coming soon!)_ is a breeze.
 
 ## File Structure
 
